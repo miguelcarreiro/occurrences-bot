@@ -37,7 +37,7 @@ const getAllOccurrences = async () => {
     const result = await axios(options).then(resp => {
         return resp.data["GetHistoryOccurrencesByLocationResult"]["arrayInfo"][0]["Data"]
         .filter((occurrence) => {
-            return occurrence.Concelho.Name === 'SÃO PEDRO DO SUL';
+            return occurrence.Concelho.Name === 'OLIVEIRA DE FRADES';
         })       
         .map((occurrence) => {
             const time = parseInt(occurrence.DataOcorrencia.substring(6, 19));
