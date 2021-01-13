@@ -8,11 +8,13 @@ COPY package*.json ./
 
 RUN npm install
 
-RUN npx sequelize-cli db:migrate
-
 COPY . .
 
 COPY --chown=node:node . .
+
+RUN npx sequelize-cli db:migrate
+
+RUN chmod -R 777 /home/node/app/data
 
 USER node
 
