@@ -1,5 +1,5 @@
 {
-  "name": "bot_cb",
+  "name": "occurrences_bot",
   "version": "1.0.0",
   "description": "A bot that gets all ANEPC occurrences in a municipality, and sends it to Discord",
   "main": "./index.js",
