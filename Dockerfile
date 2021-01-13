@@ -8,6 +8,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npx sequelize-cli db:migrate
+
 COPY . .
 
 COPY --chown=node:node . .
