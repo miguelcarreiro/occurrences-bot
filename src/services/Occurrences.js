@@ -3,7 +3,7 @@ const { DateTime } = require('luxon');
 const { AnepcApi } = require('../api');
 const { db, Op } = require('../database/models');
 const { sendMessageToChannel }  = require('./Discord');
-const { channels } = require('../../config/discord');
+const { channels, occurrenceRole } = require('../../config/discord');
 
 DateTime.local().setLocale("pt");
 
@@ -106,13 +106,13 @@ const getOccurrences = async (client) => {
         const channel = client.channels.cache.get(channels.OCCURRENCES_CHANNEL_ID);
 
         if (newOccurrences.length > 0) {
-            const strNew = `***Novas ocorrências:***\n${newOccurrences.join('\n\n')}`;
+            const strNew = `***Novas ocorrências:***\n${newOccurrences.join('\n\n')}\n<@&${occurrenceRole}>`;
             
             sendMessageToChannel(channel, strNew);
         }
 
         if (updOccurrences.length > 0) {
-            const strUpd = `***Ocorrências atualizadas:***\n${updOccurrences.join('\n\n')}`;
+            const strUpd = `***Ocorrências atualizadas:***\n${updOccurrences.join('\n\n')}\n<@&${occurrenceRole}>`;
 
             sendMessageToChannel(channel, strUpd);
         }
